@@ -1,12 +1,15 @@
 QMAKE_DEFAULT_INCDIRS = \
-    d:/Qt/Qt5.8.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include \
-    d:/Qt/Qt5.8.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed \
-    d:/Qt/Qt5.8.0/Tools/mingw530_32/i686-w64-mingw32/include \
-    d:/Qt/Qt5.8.0/Tools/mingw530_32/i686-w64-mingw32/include/c++ \
-    d:/Qt/Qt5.8.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 \
-    d:/Qt/Qt5.8.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward
+    /usr/include/c++/4.9 \
+    /usr/include/x86_64-linux-gnu/c++/4.9 \
+    /usr/include/c++/4.9/backward \
+    /usr/lib/gcc/x86_64-linux-gnu/4.9/include \
+    /usr/local/include \
+    /usr/lib/gcc/x86_64-linux-gnu/4.9/include-fixed \
+    /usr/include/x86_64-linux-gnu \
+    /usr/include
 QMAKE_DEFAULT_LIBDIRS = \
-    d:/Qt/Qt5.8.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0 \
-    d:/Qt/Qt5.8.0/Tools/mingw530_32/lib/gcc \
-    d:/Qt/Qt5.8.0/Tools/mingw530_32/i686-w64-mingw32/lib \
-    d:/Qt/Qt5.8.0/Tools/mingw530_32/lib
+    /usr/lib/gcc/x86_64-linux-gnu/4.9 \
+    /usr/lib/x86_64-linux-gnu \
+    /usr/lib \
+    /lib/x86_64-linux-gnu \
+    /lib

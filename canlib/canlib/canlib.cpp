@@ -50,46 +50,6 @@ canlib::can_err *canlib::get_can_list()
     return result;
 }
 
-//void canlib::gte()
-//{
-//    char *c = canlib::makechar("ldd /home/user/proj/canlib/app_build/app");
-//    can_err* result = canlib::exec_cmd(c);
-//    free(c);
-
-//    if(result->code == 0) {
-////        qDebug() << r->msg ;0
-//        QStringList l = QString(result->msg).split('\n');
-
-//        free_error(result);
-
-//        for(int i = 0; i < l.count(); i++)
-//        {
-//            QString ss = l[i];
-//            ss = ss.section("=>", 1, 1).trimmed();
-//            ss.truncate(ss.indexOf("("));
-//            ss = ss.trimmed();
-//            qDebug() << ss;
-//            QFileInfo f = QFileInfo(ss);
-//            if(f.exists()){
-//                QString cmd = QString("cp %1 /home/user/proj/qtlibs/%2")
-//                        .arg(ss).arg(f.fileName());
-
-//                result = exec_cmd(makechar(cmd));
-//                if(result->code != canlib::OK)
-//                    qDebug() << result->msg;
-//                free_error(result);
-//            }
-
-//        }
-
-//    }
-//    else
-//        qDebug() << result->msg;
-
-
-//}
-
-
 canlib::can_err *canlib::create_device(const char* backend_name, const char* interface_name)
 {
     canlib::can_err *result = new canlib::can_err;

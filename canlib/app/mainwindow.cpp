@@ -189,12 +189,12 @@ void MainWindow::on_bnWrite_0_clicked()
     frame.id = 1;
     frame.type = 1;
 
-    QString s = QString("%1%1").arg(ui->editWrite_0->text());
-    QByteArray b = QByteArray::fromHex(QByteArray(s.toLatin1()));
+    QByteArray b = QByteArray::fromHex(QByteArray(ui->editWrite_0->text().toLatin1()));
     b.truncate(64);
 
-    memcpy(&(frame.data), b.data(), b.length());
     frame.data_length = b.length();
+    frame.data = (char*)malloc(frame.data_length);
+    memcpy(frame.data, b.data(), frame.data_length);
 
     r = canlib::write_frame(_device_can0, &frame);
 
@@ -333,10 +333,13 @@ void MainWindow::on_bnWrite_1_clicked()
     frame.id = 1;
     frame.type = 1;
 
+
     QByteArray b = QByteArray::fromHex(QByteArray(ui->editWrite_1->text().toLatin1()));
-    memcpy(&(frame.data), b.data(), b.length());
+    b.truncate(64);
 
     frame.data_length = b.length();
+    frame.data = (char*)malloc(frame.data_length);
+    memcpy(frame.data, b.data(), frame.data_length);
 
     r = canlib::write_frame(_device_can1, &frame);
 
