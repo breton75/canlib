@@ -49,6 +49,6 @@ RESOURCES += \
 
 
 unix:!macx|win32: LIBS += -L$$PWD/../canlib_build_static/ -lcanlib
-INCLUDEPATH += $$PWD/../
-DEPENDPATH += $$PWD/../
+INCLUDEPATH += $$PWD/../canlib
+DEPENDPATH += $$PWD/../canlib
 PRE_TARGETDEPS += $$PWD/../canlib_build_static/libcanlib.a
