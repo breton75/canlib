@@ -50,7 +50,7 @@ struct can_frame {
   char *device;              // указатель на устройство получатель (только для входящего фрейма)
   unsigned int id;           // идентификатор фрейма
   int type;                  // тип фрейма (data frame, remote frame, error frame)
-  char data[64];             // данные
+  char *data;                // данные
   unsigned int data_length;  // длина данных
   char *data_str;            // данные в текстовом виде (только для входящего фрейма)
   unsigned int microseconds; // время в микросекундах (только для входящего фрейма)
@@ -78,27 +78,27 @@ can_err *set_params(char *device, can_params *params);
 /* подключиться к устройству по указателю device 
  * если код ошибки (code) == canlib::OK, то соединение успешно
  * иначе, msg содержит текст описания ошибки */
-can_err *connect(char *device);
+can_err *connect_device(char *device);
 
 /* отключиться от устройства по указателю device 
  * если код ошибки (code) == canlib::OK, то успешно отключено
  * иначе, msg содержит текст описания ошибки */
-can_err *disconnect(char *device);
+can_err *disconnect_device(char *device);
 
 /* переподключиться к устройству по указателю device. требуется после изменения параметров.
  * если код ошибки (code) == canlib::OK, то успешно отключено
  * иначе, msg содержит текст описания ошибки */
-can_err *reconnect(char *device);
+can_err *reconnect_device(char *device);
 
 /* записать данные в CAN шину по указателю device.
  * если код ошибки (code) == canlib::OK, то запись успешна
  * иначе, msg содержит текст описания ошибки */
-can_err *write(char *device, can_frame *frame);
+can_err *write_frame(char *device, can_frame *frame);
 
 /* прочитать данные из CAN шины по указателю device.
  * возвращает указатель на полученный фрейм.
  * если указатель равен NULL, значит в буфере данных нет (либо во время выполнения возникли ошибки) */
- can_frame *read(char *device);
+ can_frame *read_frame(char *device);
 
 /* функции для высвобождения ресурсов */
 void free_device(char *device);
@@ -161,7 +161,7 @@ void do_set_params()
 void do_connect()
 {
   /* подключаемся */
-  canlib::can_err *err = canlib::connect(MyDevice);
+  canlib::can_err *err = canlib::connect_device(MyDevice);
   if(err->code == canlib::OK) {
     
     // do something
@@ -183,7 +183,7 @@ void do_write()
   frame.data = {0x1, 0x2, 0x3};
   frame.data_length = 3;
   
-  canlib::can_err *err = canlib::write(MyDevice, &frame);
+  canlib::can_err *err = canlib::write_frame(MyDevice, &frame);
   if(err->code == canlib::OK) {
     
     // do something  
@@ -199,7 +199,7 @@ void do_write()
 void do_read()
 {
   /* читаем данные */
-  canlib::can_frame *frame = canlib::read(MyDevice);
+  canlib::can_frame *frame = canlib::read_frame(MyDevice);
   if(frame)
   {
     ShowMessage("Получены данные: \n"
@@ -224,7 +224,7 @@ void do_read()
 
 void do_disconnect()
 {
-  canlib::can_err *err = canlib::disconnect(MyDevice);
+  canlib::can_err *err = canlib::disconnect_device(MyDevice);
   if(err->code == canlib::OK) {
     
     // do something  
