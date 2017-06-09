@@ -39,16 +39,16 @@ RESOURCES += \
     res.qrc
 
 
-#unix:!macx|win32: LIBS += -L$$PWD/../canlib_build_static/release/ -lcanlib
+unix:!macx|win32: LIBS += -L$$PWD/../canlib_build_static/release/ -lcanlib
 
-#INCLUDEPATH += $$PWD/../canlib
-#DEPENDPATH += $$PWD/../canlib
+INCLUDEPATH += $$PWD/../canlib
+DEPENDPATH += $$PWD/../canlib
 
-#win32:!win32-g++: PRE_TARGETDEPS += $$PWD/../canlib_build_static/release/canlib.lib
-#else:unix:!macx|win32-g++: PRE_TARGETDEPS += $$PWD/../canlib_build_static/release/libcanlib.a
+win32:!win32-g++: PRE_TARGETDEPS += $$PWD/../canlib_build_static/release/canlib.lib
+else:unix:!macx|win32-g++: PRE_TARGETDEPS += $$PWD/../canlib_build_static/release/libcanlib.a
 
 
-unix:!macx|win32: LIBS += -L$$PWD/../canlib_build_static/ -lcanlib
-INCLUDEPATH += $$PWD/../
-DEPENDPATH += $$PWD/../
-PRE_TARGETDEPS += $$PWD/../canlib_build_static/libcanlib.a
+#unix:!macx|win32: LIBS += -L$$PWD/../canlib_build/release/ -lcanlib
+#INCLUDEPATH += $$PWD/../
+#DEPENDPATH += $$PWD/../
+#PRE_TARGETDEPS += $$PWD/../canlib_build_static/release/libcanlib.a
